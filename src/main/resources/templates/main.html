@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <style type="text/css">
+        footer {
+           position:fixed;
+           left:0px;
+           bottom:0px;
+           height:30px;
+           width:100%;
+        }
+        section#about{
+            position:fixed;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+<header th:insert="header :: header"></header>
+<section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Об этой страннице</h2>
+          <p class="lead">Владимир Путин - молодец, политик, лидер и боец. Я люблю его, потому что он поднял Россию с колен. Вот каким должен быть истинный президент:</p>
+          <ul>
+            <li>Владимир Владимирович Путин</li>
+            <li>Владимир Владимирович Путин</li>
+            <li>Владимир Владимирович Путин</li>
+            <li>Владимир Владимирович Путин</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
+<footer th:insert="footer :: footer"></footer>
+</body>
+</html>
