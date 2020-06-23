@@ -4,38 +4,48 @@
     <title th:text="${title}" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-    <style type="text/css">
-        footer {
-           position:fixed;
-           left:0px;
-           bottom:0px;
-           height:30px;
-           width:100%;
+    <link rel="icon" href="icon_path" type="image/icon type">
+    <style>
+        #features{
+            margin-top: 56px;
         }
-        section#about{
-            position:fixed;
-            margin-top: 10%;
+        #back{
+
         }
     </style>
 </head>
 <body>
 <header th:insert="header :: header"></header>
-<section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Об этой страннице</h2>
-          <p class="lead">Владимир Путин - молодец, политик, лидер и боец. Я люблю его, потому что он поднял Россию с колен. Вот каким должен быть истинный президент:</p>
-          <ul>
-            <li>Владимир Владимирович Путин</li>
-            <li>Владимир Владимирович Путин</li>
-            <li>Владимир Владимирович Путин</li>
-            <li>Владимир Владимирович Путин</li>
-          </ul>
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div id="features" class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading"> ЕвГЕНИЙ Николаевич!<span class="text-muted"> Восхитительный</span></h2>
+            <p class="lead"> ДА ДА Я</p>
         </div>
-      </div>
+        <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://static.mk.ru/upload/entities/2019/12/06/10/articles/detailPicture/c6/62/f6/75/17bdb00942cb4e98e742b7be318f3cdc.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" ><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect></img>
+        </div>
     </div>
-</section>
-<footer th:insert="footer :: footer"></footer>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Тот самый... <span class="text-muted"> МАЭСТРО</span></h2>
+            <p class="lead">ПЕРВАЯ НАУЧНАЯ ИСТОРИЯ ВОЙНЫ 1812</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://icdn.lenta.ru/images/2020/03/27/14/20200327140136001/pwa_vertical_1280_64287157e4b51d76b4e1490de46c9a0b.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect></img>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+</div>
+<div class="col-md-6 white" th:insert="footer :: footer"></div>
 </body>
 </html>

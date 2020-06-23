@@ -1,23 +1,22 @@
 <div th:fragment="header">
-   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-       <div class="container">
-         <a class="navbar-brand" href="index.html">Кто? Я?</a>
-         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarResponsive">
-           <ul class="navbar-nav ml-auto">
-             <li class="nav-item">
-               <a class="nav-link" href="about.html">О нас</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" href="services.html">Обо мне</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" href="contact.html">О тебе</a>
-             </li>
-           </ul>
-         </div>
-       </div>
-     </nav>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Пажылая ЧимЧима</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Обо мне<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Контакты</a>
+          </li>
+        </ul>
+          <a href="/up" class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="button" >Регистрация</a>
+          <a href="/in" class="btn btn-outline-primary my-2 my-sm-0" type="button">Вход</a>
+      </div>
+    </nav>
+  </header>
 </div>
