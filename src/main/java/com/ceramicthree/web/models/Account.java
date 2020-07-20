@@ -1,6 +1,9 @@
 package com.ceramicthree.web.models;
 
+import com.ceramicthree.web.ENUM.Role;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Account {
@@ -8,11 +11,24 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
     private String password;
+
+    //TODO realise how to give roles to user
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "role", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
+
+    public Account() {
+    }
+
+    public Account(Integer id, String email, String password) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -36,5 +52,13 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

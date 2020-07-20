@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class SignInController {
-    @GetMapping("/in")
-    public String signIn(Model model){
-        model.addAttribute("title", "Вход");
-        return "sign_in";
+public class ProgramsController {
+    @GetMapping("/programs")
+    public String program(Model model){
+        model.addAttribute("title","Программы");
+        return "programs";
     }
 }
