@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${title}"></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title th:text="auth"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
-        body{
+        body {
             background: linear-gradient(-225deg, #9EFBD3 0%, #57e9f2 48%, #45d4fb 100%);
             background-size: cover;
             height: 100%;
@@ -14,9 +15,9 @@
             background-attachment: fixed;
         }
 
-        #login_box{
+        #login_box {
             width: 320px;
-            height: 420px;
+            height: 360px;
             background: #000;
             color: #fff;
             top: 50%;
@@ -27,7 +28,7 @@
             border-radius: 5%;
         }
 
-        #avatar_box{
+        #avatar_box {
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -37,25 +38,25 @@
             background: #ffffff;
         }
 
-        #avatar{
+        #avatar {
             margin-left: 5px;
         }
 
-        #usr{
+        #usr {
             margin-top: 60px;
         }
 
-        #back{
-            color: white;
+        #back {
+            color: black;
             margin-top: 5px;
             margin-left: calc(50% - 50px);
         }
 
-        #error{
+        #error {
             font-size: 15px;
         }
 
-        .login_form input{
+        .login_form input {
             border: none;
             outline: none;
             border-bottom: 1px solid #ffffff;
@@ -66,7 +67,15 @@
             font-size: 16px;
         }
 
-        button{
+        .login_form {
+            right: 100px;
+            margin-left: 10px;
+            position: relative;
+            width: 280px;
+            bottom: 20px;
+        }
+
+        button {
             margin-left: calc(50% - 50px);
             width: 105px;
             border-radius: 10%;
@@ -75,24 +84,41 @@
     </style>
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
 <div class="container mt-5">
+    <h3 th:if="${param.error}" style="position: relative; margin-left: 37%">Authentification failed.</h3>
     <div class="container" id="login_box">
         <div id="avatar_box">
             <img id="avatar" src="https://img.icons8.com/ios-glyphs/90/000000/gender-neutral-user.png">
-            <form class="login_form" action="/auth" method="post">
-                <h5 id="usr">Username</h5>
-                <input type="text" placeholder="Enter Username">
-                <h5 class="mt-3">Password</h5>
-                <input type="password" placeholder="Enter Password">
-                <button class="btn btn-outline-light btn-lg mt-4" type="submit">Sign In </button><br>
-                <button class="btn btn-outline-light btn-lg mt-3" type="submit">Sign Up</button><br>
+            <form class="login_form" method="post">
+                <div class="mailinput">
+                    <h5 id="usr">Email</h5>
+                    <input type="text" name="email" placeholder="Enter Email">
+                </div>
+
+                <div class="passinput">
+                    <h5 class="mt-3">Password</h5>
+                    <input type="password" name="password" placeholder="Enter Password">
+                </div>
+                <button class="btn btn-outline-light btn-lg mt-4" type="submit">Sign In</button>
             </form>
+            <div class="mt-5">
+                <a id="back" href="/">
+                    <button class="btn btn-outline-dark">Back</button>
+                </a>
+            </div>
         </div>
-        <a id="back" href="/"><p>Back</p></a>
     </div>
 </div>
+
 </body>
 </html>

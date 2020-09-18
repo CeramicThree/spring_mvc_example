@@ -1,6 +1,8 @@
 package com.ceramicthree.web.configurations;
 
+import com.ceramicthree.web.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,10 +17,13 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
-    private DataSource dataSource;
+    private CustomUserDetailsService userDetailsService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf()
+                    .disable()
                 .authorizeRequests()
                     .antMatchers("/", "/auth").permitAll()
                     .anyRequest().authenticated()
@@ -31,13 +36,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .permitAll();
     }
 
-    //TODO rewrite jdbcAuth queries
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("select email, password from account where email=?")
-                .authoritiesByUsernameQuery("select u.email, ur.roles from account u inner join role ur on u.id = ur.id where u.email=?");
+        auth.userDetailsService(userDetailsService);
+    }
+
+    @Bean
+    protected void getPasswordEncoder(){
+        NoOpPasswordEncoder.getInstance();
     }
 }

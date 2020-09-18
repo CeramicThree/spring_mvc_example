@@ -1,15 +1,15 @@
 package com.ceramicthree.web.controllers;
 
-import com.ceramicthree.web.ENUM.Role;
 import com.ceramicthree.web.models.Account;
 import com.ceramicthree.web.repos.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
+import java.util.Optional;
+
 
 @Controller
 public class AuthController {
@@ -17,20 +17,18 @@ public class AuthController {
     AccountRepository accountRepo;
 
     @GetMapping("/auth")
-    public String auth(){
+    public String auth() {
         return "/auth";
     }
 
     @PostMapping("/auth")
-    public String addUser(Account account, Model model){
-        Account accountDb = accountRepo.findByEmail(account.getEmail());
-        if(accountDb != null){
-            model.addAttribute("message", "This user already exist");
-            return "/auth";
+    public String signUp(@RequestParam String email, @RequestParam String password){
+        Optional<Account> account = accountRepo.findByEmail(email);
+        if (account.isPresent()) {
+            accountRepo.save(new Account(email, password));
+        } else {
+            System.out.println("User with this email is exist");
         }
-        account.setRoles(Collections.singleton(Role.USER));
-        accountRepo.save(account);
         return "redirect:/";
     }
-
 }

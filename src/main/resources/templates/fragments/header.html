@@ -1,24 +1,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="header">
-<nav id="header" class="navbar navbar-expand-lg navbar-dark ">
-    <a class="navbar-brand" href="/">Workout Application</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav id="header" class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="/">Workout Application</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a id="nav-home" class="nav-link mt-1" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a id="nav-prog" class="nav-link mt-1" href="/programs">Programs <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a href="/auth"><button class="btn btn btn-outline-light my-2 my-sm-0" type="button">Sign In</button></a>
-        </form>
-    </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a id="nav-home" class="nav-link mt-1" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a id="nav-prog" class="nav-link mt-1" href="/programs">Programs
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+            <div th:if="">
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="/auth">
+                        <button class="btn btn btn-outline-light my-2 my-sm-0" type="button">Sign In</button>
+                    </a>
+                </form>
+            </div>
+            <div>
+                <form th:action="@{/profile}">
+                    <button class="btn btn btn-outline-light my-2 my-sm-0" type="button">My Profile</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 </div>
 </html>
